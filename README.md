@@ -1,28 +1,28 @@
-# SmartFarmFlask - AI 농장 시뮬레이터 Flask 서버
+﻿# Flask-SmartFarmFlask - AI ?띿옣 ?쒕??덉씠??Flask ?쒕쾭
 
-스마트팜 WinForms 클라이언트([SmartFarmSimulation](https://github.com/yaong832/SmartFarmSimulation))와 연동하는 **농장 전용** Flask 백엔드입니다.
+?ㅻ쭏?명뙗 WinForms ?대씪?댁뼵??[SmartFarmSimulation](https://github.com/yaong832/SmartFarmSimulation))? ?곕룞?섎뒗 **?띿옣 ?꾩슜** Flask 諛깆뿏?쒖엯?덈떎.
 
-> **식각(Etch) Flask와 별도 프로그램** - 포트 5000 공유 가능하나 **동시 실행 불가**.
-> 식각 모니터링: [etchflask](https://github.com/yaong832/etchflask) / `C:\etchflask`
+> **?앷컖(Etch) Flask? 蹂꾨룄 ?꾨줈洹몃옩** - ?ы듃 5000 怨듭쑀 媛?ν븯??**?숈떆 ?ㅽ뻾 遺덇?**.
+> ?앷컖 紐⑤땲?곕쭅: [Flask-etchflask](https://github.com/yaong832/Flask-etchflask) / `C:\Flask-etchflask`
 
-## 로컬 경로
+## 濡쒖뺄 寃쎈줈
 
 `C:\farmui\farmui`
 
-## 빠른 실행
+## 鍮좊Ⅸ ?ㅽ뻾
 
 `C:\farmui\farmui\run_farmui.bat`
 
-## 주요 API
+## 二쇱슂 API
 
-- `GET /api/sensors` - 헬스체크
-- `POST /api/sensor-data` - WinForms 센서 수신
-- `GET/POST /api/crops` - 작물 설정
-- `POST /api/ai/control` - AI 제어 명령
+- `GET /api/sensors` - ?ъ뒪泥댄겕
+- `POST /api/sensor-data` - WinForms ?쇱꽌 ?섏떊
+- `GET/POST /api/crops` - ?묐Ъ ?ㅼ젙
+- `POST /api/ai/control` - AI ?쒖뼱 紐낅졊
 
-## 연동
+## ?곕룞
 
-| 구성 | 저장소 |
+| 援ъ꽦 | ??μ냼 |
 |------|--------|
 | WinForms | [SmartFarmSimulation](https://github.com/yaong832/SmartFarmSimulation) |
-| Flask | [SmartFarmFlask](https://github.com/yaong832/SmartFarmFlask) |
+| Flask | [Flask-SmartFarmFlask](https://github.com/yaong832/Flask-SmartFarmFlask) |
