@@ -81,47 +81,6 @@ def get_farm():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/api/save-logs', methods=['POST'])
-def save_logs():
-    """로그 파일 저장 API"""
-    try:
-        data = request.get_json()
-        file_path = data.get('filePath', '') if isinstance(data, dict) else ''
-        
-        if not file_path:
-            # 파일 경로가 없으면 기본 경로 사용
-            file_path = os.path.join('logs', f'SmartFarm_Logs_{datetime.now().strftime("%Y%m%d_%H%M%S")}.txt')
-        
-        logs = data.get('logs', []) if isinstance(data, dict) else []
-        
-        success = data_manager.save_logs_to_file(file_path, logs)
-        
-        if success:
-            return jsonify({"success": True, "message": "로그 저장 완료"})
-        else:
-            return jsonify({"success": False, "message": "로그 저장 실패"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-@app.route('/api/load-logs-file', methods=['POST'])
-def load_logs_file():
-    """로그 파일 불러오기 API"""
-    try:
-        content = request.get_data(as_text=True)
-        
-        # 파일 내용인지 파일 경로인지 확인
-        if '\n' in content or len(content) > 260:
-            # 파일 내용으로 처리
-            logs = data_manager.parse_logs_from_content(content)
-        else:
-            # 파일 경로로 처리
-            file_path = content.strip().strip('"\'')
-            logs = data_manager.load_logs_from_file(file_path)
-        
-        return jsonify(logs)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
 @app.route('/api/add-logs', methods=['POST'])
 def add_logs():
     """로그 추가 API"""
@@ -721,10 +680,14 @@ if __name__ == '__main__':
     browser_thread.start()
     
     # Flask 서버 시작
+    # FARM_FLASK_HOST: 기본 0.0.0.0(다른 PC에서 대시보드 접속 가능). 같은 PC에서만 쓰면 127.0.0.1
+    # FARM_FLASK_DEBUG=1 일 때만 디버그 모드 (개발용. 디버그 모드는 오류 화면에서 코드 실행이 가능해 위험)
+    host = os.environ.get('FARM_FLASK_HOST', '0.0.0.0').strip() or '0.0.0.0'
+    debug = os.environ.get('FARM_FLASK_DEBUG', '').strip().lower() in ('1', 'true', 'yes')
     print("\n" + "="*50)
     print("Flask 웹 서버를 시작합니다...")
-    print("서버 주소: http://localhost:5000")
+    print(f"서버 주소: http://localhost:5000 (바인딩 {host}, 디버그 {'켜짐' if debug else '꺼짐'})")
     print("="*50 + "\n")
     
-    app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
+    app.run(host=host, port=5000, debug=debug, use_reloader=False)
 
