@@ -27,21 +27,21 @@
 ### 1. Flask 서버 실행
 
 #### 방법 1: PyCharm에서 실행
-1. PyCharm에서 `C:\farmui` 프로젝트 열기
+1. PyCharm에서 저장소 폴더(`Flask-SmartFarmFlask`) 열기
 2. `app.py` 파일 열기
 3. `Run` → `Run 'app'` 또는 `Shift + F10`
 4. 서버가 시작되면 자동으로 브라우저가 열림
 
 #### 방법 2: 터미널에서 실행
 ```bash
-cd C:\farmui
+cd Flask-SmartFarmFlask
 python app.py
 ```
 
 #### 방법 3: 배치 파일 실행 (Windows)
 ```bash
-cd C:\farmui
-run_flask.bat
+cd Flask-SmartFarmFlask
+run_farmui.bat
 ```
 
 ### 2. 웹 브라우저 접속
@@ -302,7 +302,7 @@ Flask 웹 서버를 시작합니다...
 - **기본**: 일반 작물 기준 (작물 정보 없을 때)
 
 #### 새 작물 추가 방법
-1. `C:\farmui\crop_config.py` 파일 열기
+1. `crop_config.py` 파일 열기
 2. `CROP_OPTIMAL_CONDITIONS` 딕셔너리에 새 작물 추가
 3. Flask 서버 재시작
 4. C# 애플리케이션에서 새 작물 이름 설정
@@ -574,14 +574,14 @@ curl http://localhost:5000/api/crops
 ## 📞 지원 및 추가 정보
 
 ### 관련 파일
-- **Flask 서버**: `C:\farmui\app.py`
-- **AI 분석 모듈**: `C:\farmui\ai_analysis.py`
-- **작물 설정**: `C:\farmui\crop_config.py`
-- **웹 UI**: `C:\farmui\templates\index.html`
+- **Flask 서버**: `app.py`
+- **AI 분석 모듈**: `ai_analysis.py`
+- **작물 설정**: `crop_config.py`
+- **웹 UI**: `templates/index.html`
 
 ### 추가 문서
-- **AI 학습 전략**: `C:\farmui\ai_learning_strategy.md`
-- **PyCharm 설정**: `C:\farmui\README_PYCHARM.md`
+- **AI 학습 전략**: [docs/ai_learning_strategy.md](docs/ai_learning_strategy.md)
+- **PyCharm 설정**: [README_PYCHARM.md](README_PYCHARM.md)
 
 ---
 

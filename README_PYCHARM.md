@@ -2,7 +2,7 @@
 
 ## 가장 빠른 실행 (배치 파일)
 
-`C:\farmui\farmui\run_farmui.bat` 더블클릭
+저장소 폴더의 `run_farmui.bat` 더블클릭
 
 - `requirements.txt` 설치 후 Flask 시작
 - 약 1.5초 뒤 **브라우저가 자동으로** `http://127.0.0.1:5000` 을 엽니다 (`app.py` 내장)
@@ -11,7 +11,7 @@
 
 ### 1. PyCharm 프로젝트 열기
 1. PyCharm 실행
-2. `File` → `Open` → `C:\farmui\farmui` 폴더 선택
+2. `File` → `Open` → 이 저장소를 받은 폴더(예: `Flask-SmartFarmFlask`) 선택
 
 ### 2. Python 인터프리터 설정
 1. `File` → `Settings` (또는 `Ctrl+Alt+S`)
@@ -32,8 +32,8 @@
 2. `+` 버튼 클릭 → `Python` 선택
 3. 설정:
    - **Name**: `Flask Server`
-   - **Script path**: `C:\farmui\farmui\app.py` 파일 선택
-   - **Working directory**: `C:\farmui\farmui` 선택
+   - **Script path**: 저장소 폴더의 `app.py` 선택
+   - **Working directory**: 저장소 폴더 선택
    - **Python interpreter**: 위에서 설정한 인터프리터 선택
 
 ### 5. Flask 서버 실행
