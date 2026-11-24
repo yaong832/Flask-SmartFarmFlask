@@ -608,54 +608,6 @@ class DataManager:
         finally:
             conn.close()
     
-    def save_logs_to_file(self, file_path: str, logs: List[str]) -> bool:
-        """로그를 파일로 저장"""
-        try:
-            os.makedirs(os.path.dirname(file_path) if os.path.dirname(file_path) else '.', exist_ok=True)
-            
-            with open(file_path, 'w', encoding='utf-8') as f:
-                for log in logs:
-                    f.write(log + '\n')
-            
-            return True
-        except Exception as e:
-            print(f"로그 파일 저장 오류: {e}")
-            return False
-    
-    def load_logs_from_file(self, file_path: str) -> List[Dict[str, Any]]:
-        """파일에서 로그 불러오기"""
-        try:
-            if not os.path.exists(file_path):
-                return []
-            
-            with open(file_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-            
-            logs = []
-            for line in lines:
-                line = line.strip()
-                if not line:
-                    continue
-                
-                # [HH:MM:SS] 형식의 타임스탬프 추출
-                if line.startswith('[') and len(line) > 11:
-                    timestamp = line[1:9] if ']' in line[:10] else datetime.now().strftime("%H:%M:%S")
-                    message = line[11:].strip() if ']' in line[:10] else line
-                else:
-                    timestamp = datetime.now().strftime("%H:%M:%S")
-                    message = line
-                
-                logs.append({
-                    "timestamp": timestamp,
-                    "message": message,
-                    "date": datetime.now().strftime("%Y-%m-%d")
-                })
-            
-            return logs[:500]  # 최대 500개
-        except Exception as e:
-            print(f"로그 파일 불러오기 오류: {e}")
-            return []
-    
     def parse_logs_from_content(self, content: str) -> List[Dict[str, Any]]:
         """로그 내용 파싱 - 다양한 타임스탬프 형식 지원"""
         import re
